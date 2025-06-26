@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Value of Your Library Use</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+  body {
+    font-family: Arial, sans-serif;
+    padding: 10px;
+    max-width: 700px;
+    margin: 0 auto;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    border: 1px solid #ccc;
+    border-radius: 12px; /* rounded corners */
+    overflow: hidden; /* ensures corners apply to inner cells */
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1); /* subtle initial shadow */
+    transition: box-shadow 0.3s ease; /* smooth float effect */
+  }
+
+  table:hover {
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15); /* float effect on hover */
+  }
+
+  th, td {
+    border: 1px solid #ccc;
+    padding: 8px;
+    text-align: left;
+    background-color: white;
+  }
+
+  input[type="text"] {
+    width: 60px;
+  }
+
+  input[type="button"],
+  input[type="reset"] {
+    margin-top: 10px;
+  }
+
+  hr {
+    margin: 10px 0;
+  }
+
+  caption {
+    font-weight: bold;
+    font-size: 1.2em;
+    margin-bottom: 10px;
+  }
+</style>
+
+
+  <script>
+    window.onload = function () {
+      document.calculatorform.reset();
+    };
+
+    function doCalculator() {
+      const f = document.calculatorform;
+      const fields = [
+        ['books', 17.00], ['yabooks', 12.00], ['childrensbooks', 17.00],
+        ['audiobooks', 9.95], ['ill', 25.00], ['ebooks', 15.00],
+        ['magazines', 5.00], ['newspapers', 9.50], ['movies', 4.00],
+        ['cds', 9.95], ['musicdownloads', 1.00], ['meetingroom', 25.00],
+        ['adultprogram', 15.00], ['yaprogram', 12.00], ['childrensprogram', 7.00],
+        ['museumpasses', 20.00], ['computerhours', 12.00], ['databases', 19.95],
+        ['reference', 7.00]
+      ];
+
+      let total = 0;
+      fields.forEach(([field, value]) => {
+        const count = parseFloat(f[field].value) || 0;
+        const result = count * value;
+        document.getElementById(field + "Result").value = result.toFixed(2);
+        total += result;
+      });
+
+      f.totalResult.value = total.toFixed(2);
+    }
+
+    function popUp(url, name, w, h) {
+      window.open(url, name, `resizable,scrollbars,menubar=0,width=${w},height=${h}`);
+    }
+  </script>
+</head>
+<body>
+
+  <div align="center">
+    <form name="calculatorform" id="calculatorform">
+      <table border="0" cellpadding="0" cellspacing="0" summary="Library use calculator">
+        <caption>Value of Your Library Use</caption>
+        <thead>
+          <tr>
+            <th>Input Your Use</th>
+            <th>Library Materials & Services</th>
+            <th><a href="javascript:popUp('valuecalc_costs.html','window',450,575)">Value of Your Use</a></th>
+          </tr>
+          <tr><td colspan="3"><hr></td></tr>
+        </thead>
+        <tbody>
+          <!-- Fields inserted here -->
+          <!-- Template rows -->
+          <tr><td><input type="text" name="books" id="books" onchange="doCalculator()"></td><td><label for="books">Adult Books Borrowed</label></td><td>$<input type="text" id="booksResult" value="0.00" readonly></td></tr>
+          <tr><td><input type="text" name="yabooks" id="yabooks" onchange="doCalculator()"></td><td><label for="yabooks">YA Books Borrowed</label></td><td>$<input type="text" id="yabooksResult" value="0.00" readonly></td></tr>
+          <tr><td><input type="text" name="childrensbooks" id="childrensbooks" onchange="doCalculator()"></td><td><label for="childrensbooks">Children's Books Borrowed</label></td><td>$<input type="text" id="childrensbooksResult" value="0.00" readonly></td></tr>
+          <tr><td><input type="text" name="audiobooks" id="audiobooks" onchange="doCalculator()"></td><td><label for="audiobooks">Audiobooks Borrowed</label></td><td>$<input type="text" id="audiobooksResult" value="0.00" readonly></td></tr>
+          <tr><td><input type="text" name="ill" id="ill" onchange="doCalculator()"></td><td><label for="ill">Interlibrary Loan Requests</label></td><td>$<input type="text" id="illResult" value="0.00" readonly></td></tr>
+          <tr><td><input type="text" name="ebooks" id="ebooks" onchange="doCalculator()"></td><td><label for="ebooks">eBooks Downloaded</label></td><td>$<input type="text" id="ebooksResult" value="0.00" readonly></td></tr>
+          <tr><td><input type="text" name="magazines" id="magazines" onchange="doCalculator()"></td><td><label for="magazines">Magazines Read</label></td><td>$<input type="text" id="magazinesResult" value="0.00" readonly></td></tr>
+          <tr><td><input type="text" name="newspapers" id="newspapers" onchange="doCalculator()"></td><td><label for="newspapers">Newspapers Read</label></td><td>$<input type="text" id="newspapersResult" value="0.00" readonly></td></tr>
+          <tr><td><input type="text" name="movies" id="movies" onchange="doCalculator()"></td><td><label for="movies">Movies Borrowed</label></td><td>$<input type="text" id="moviesResult" value="0.00" readonly></td></tr>
+          <tr><td><input type="text" name="cds" id="cds" onchange="doCalculator()"></td><td><label for="cds">CDs Borrowed</label></td><td>$<input type="text" id="cdsResult" value="0.00" readonly></td></tr>
+          <tr><td><input type="text" name="musicdownloads" id="musicdownloads" onchange="doCalculator()"></td><td><label for="musicdownloads">Music Downloaded</label></td><td>$<input type="text" id="musicdownloadsResult" value="0.00" readonly></td></tr>
+          <tr><td><input type="text" name="meetingroom" id="meetingroom" onchange="doCalculator()"></td><td><label for="meetingroom">Meeting Room Use (per hour)</label></td><td>$<input type="text" id="meetingroomResult" value="0.00" readonly></td></tr>
+          <tr><td><input type="text" name="adultprogram" id="adultprogram" onchange="doCalculator()"></td><td><label for="adultprogram">Adult Program Attended</label></td><td>$<input type="text" id="adultprogramResult" value="0.00" readonly></td></tr>
+          <tr><td><input type="text" name="yaprogram" id="yaprogram" onchange="doCalculator()"></td><td><label for="yaprogram">Young Adult Program Attended</label></td><td>$<input type="text" id="yaprogramResult" value="0.00" readonly></td></tr>
+          <tr><td><input type="text" name="childrensprogram" id="childrensprogram" onchange="doCalculator()"></td><td><label for="childrensprogram">Children's Program Attended</label></td><td>$<input type="text" id="childrensprogramResult" value="0.00" readonly></td></tr>
+          <tr><td><input type="text" name="museumpasses" id="museumpasses" onchange="doCalculator()"></td><td><label for="museumpasses">Museum Passes Borrowed</label></td><td>$<input type="text" id="museumpassesResult" value="0.00" readonly></td></tr>
+          <tr><td><input type="text" name="computerhours" id="computerhours" onchange="doCalculator()"></td><td><label for="computerhours">Computer Use (per hour)</label></td><td>$<input type="text" id="computerhoursResult" value="0.00" readonly></td></tr>
+          <tr><td><input type="text" name="databases" id="databases" onchange="doCalculator()"></td><td><label for="databases">Database Searches</label></td><td>$<input type="text" id="databasesResult" value="0.00" readonly></td></tr>
+          <tr><td><input type="text" name="reference" id="reference" onchange="doCalculator()"></td><td><label for="reference">Reference Assistance</label></td><td>$<input type="text" id="referenceResult" value="0.00" readonly></td></tr>
+
+          <tr><td colspan="3"><hr></td></tr>
+          <tr>
+            <td colspan="2" align="center">
+              <input type="button" value="Calculate The Value of Your Library Use" onclick="doCalculator()">
+              <input type="reset" value="Clear Form">
+            </td>
+            <td>$<input type="text" name="totalResult" id="totalResult" size="5" value="0.00" readonly></td>
+          </tr>
+          <tr><td colspan="3"><hr></td></tr>
+          <tr>
+            <td colspan="3" align="left">
+              This worksheet was adapted from the
+              <a href="http://www.masslib.org" target="_blank">Massachusetts Library Association</a> and
+              <a href="http://www.chelmsfordlibrary.org" target="_blank">Chelmsford Library</a>.
+              <a href="javascript:popUp('valuecalc_costs.html','window',450,575)">How the values were calculated</a>.
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </form>
+  </div>
+
+</body>
+</html>
