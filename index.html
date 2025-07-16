@@ -9,7 +9,7 @@
   <meta property="og:title" content="Discover Your Library Savings!" />
   <meta property="og:description" content="I used this tool to calculate how much money I saved by using the library. Try it yourself!" />
   <meta property="og:image" content="https://raw.githubusercontent.com/KCLibrary/kcpl-value-calculator-v2/main/download.jpg" />
-  <meta property="og:url" content="https://kclibrary.github.io/kcpl-value-calculator-v2/" />
+  <meta property="og:url" content="https://kclibrary.github.io/kcpl-value-calculator//" />
   <meta property="og:type" content="website" />
   <style>
     body {
@@ -100,7 +100,7 @@
 
     function shareValue() {
       const total = document.getElementById("totalResult").value;
-      const message = `I saved $${total} by using my Kansas City public library! 📚💡 Calculate your savings: https://kclibrary.github.io/kcpl-value-calculator-v2/ #LibraryValue #PublicLibrary #KCPL`;
+      const message = `I saved $${total} by using my Kansas City public library! 📚💡 Calculate your savings: https://kclibrary.github.io/kcpl-value-calculator/ #LibraryValue #PublicLibrary #KCPL`;
       const encodedMessage = encodeURIComponent(message);
       const twitterURL = `https://twitter.com/intent/tweet?text=${encodedMessage}`;
       window.open(twitterURL, '_blank', 'width=600,height=400');
@@ -111,7 +111,7 @@
     }
 
      function shareOnFacebook() {
-    const appUrl = "https://kclibrary.github.io/kcpl-value-calculator-v2/"; // Replace with your actual app link
+    const appUrl = "https://kclibrary.github.io/kcpl-value-calculator/"; // Replace with your actual app link
     const facebookURL = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(appUrl)}`;
     window.open(facebookURL, '_blank', 'width=600,height=400');
   }
