@@ -4,55 +4,70 @@
   <meta charset="UTF-8">
   <title>Value of Your Library Use</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Add this inside the <head> -->
+  <!-- Add this inside the <head> -->
+  <meta property="og:title" content="Discover Your Library Savings!" />
+  <meta property="og:description" content="I used this tool to calculate how much money I saved by using the library. Try it yourself!" />
+  <meta property="og:image" content="https://raw.githubusercontent.com/KCLibrary/kcpl-value-calculator-v2/main/download.jpg" />
+  <meta property="og:url" content="https://kclibrary.github.io/kcpl-value-calculator-v2/" />
+  <meta property="og:type" content="website" />
   <style>
-  body {
-    font-family: Arial, sans-serif;
-    padding: 10px;
-    max-width: 700px;
-    margin: 0 auto;
-  }
+    body {
+      font-family: Arial, sans-serif;
+      font-size: 16px;
+      padding: 10px;
+      max-width: 800px;
+      margin: 0 auto;
+    }
 
-  table {
-    width: 100%;
-    border-collapse: collapse;
-    border: 1px solid #ccc;
-    border-radius: 12px; /* rounded corners */
-    overflow: hidden; /* ensures corners apply to inner cells */
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1); /* subtle initial shadow */
-    transition: box-shadow 0.3s ease; /* smooth float effect */
-  }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      border: 1px solid #ccc;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+      transition: box-shadow 0.3s ease;
+      font-size: 1em;
+    }
 
-  table:hover {
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15); /* float effect on hover */
-  }
+    table:hover {
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+    }
 
-  th, td {
-    border: 1px solid #ccc;
-    padding: 8px;
-    text-align: left;
-    background-color: white;
-  }
+    caption {
+      font-weight: bold;
+      font-size: 1.5em;
+      margin-bottom: 10px;
+    }
 
-  input[type="text"] {
-    width: 60px;
-  }
+    th, td {
+      border: 1px solid #ccc;
+      padding: 12px;
+      text-align: left;
+      background-color: white;
+      font-size: 1em;
+    }
 
-  input[type="button"],
-  input[type="reset"] {
-    margin-top: 10px;
-  }
+    input[type="text"] {
+      width: 80px;
+      font-size: 1em;
+      padding: 4px;
+    }
 
-  hr {
-    margin: 10px 0;
-  }
+    input[type="button"],
+    input[type="reset"],
+    button {
+      margin-top: 10px;
+      font-size: 1em;
+      padding: 8px 16px;
+      cursor: pointer;
+    }
 
-  caption {
-    font-weight: bold;
-    font-size: 1.2em;
-    margin-bottom: 10px;
-  }
-</style>
-
+    hr {
+      margin: 10px 0;
+    }
+  </style>
 
   <script>
     window.onload = function () {
@@ -62,13 +77,14 @@
     function doCalculator() {
       const f = document.calculatorform;
       const fields = [
-        ['books', 17.00], ['yabooks', 12.00], ['childrensbooks', 17.00],
-        ['audiobooks', 9.95], ['ill', 25.00], ['ebooks', 15.00],
-        ['magazines', 5.00], ['newspapers', 9.50], ['movies', 4.00],
-        ['cds', 9.95], ['musicdownloads', 1.00], ['meetingroom', 25.00],
-        ['adultprogram', 15.00], ['yaprogram', 12.00], ['childrensprogram', 7.00],
-        ['museumpasses', 20.00], ['computerhours', 12.00], ['databases', 19.95],
-        ['reference', 7.00]
+        ['books', 25.00], ['childrenbooks', 16.00], ['movies', 20.00],
+        ['music', 20.00], ['audiobooks', 40.00], ['materialsused', 2.00],
+        ['interlibrary', 25.00], ['downloadableab', 25.00], ['downloadableeB', 15.00],
+        ['magazines', 3.00], ['computeruse', 12.00], ['wifisessions', 3.00],
+        ['hotspots', 30.00], ['newspaper', 2.00], ['databaseseraches', 30.00],
+        ['gnenealogy', 22.00], ['programsandcalssses', 10.00], ['onlinetraining', 25.00],
+        ['livetutoring', 40.00], ['reference', 15.00],
+        ['meetingroooms', 30.00], ['chromebooks', 100.00]
       ];
 
       let total = 0;
@@ -82,56 +98,81 @@
       f.totalResult.value = total.toFixed(2);
     }
 
+    function shareValue() {
+      const total = document.getElementById("totalResult").value;
+      const message = `I saved $${total} by using my Kansas City public library! 📚💡 Calculate your savings: https://kclibrary.github.io/kcpl-value-calculator-v2/ #LibraryValue #PublicLibrary #KCPL`;
+      const encodedMessage = encodeURIComponent(message);
+      const twitterURL = `https://twitter.com/intent/tweet?text=${encodedMessage}`;
+      window.open(twitterURL, '_blank', 'width=600,height=400');
+    }
+
     function popUp(url, name, w, h) {
       window.open(url, name, `resizable,scrollbars,menubar=0,width=${w},height=${h}`);
     }
+
+     function shareOnFacebook() {
+    const appUrl = "https://kclibrary.github.io/kcpl-value-calculator-v2/"; // Replace with your actual app link
+    const facebookURL = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(appUrl)}`;
+    window.open(facebookURL, '_blank', 'width=600,height=400');
+  }
   </script>
 </head>
-<body>
 
+<body>
   <div align="center">
     <form name="calculatorform" id="calculatorform">
-      <table border="0" cellpadding="0" cellspacing="0" summary="Library use calculator">
+      <table summary="Library use calculator">
         <caption>Value of Your Library Use</caption>
         <thead>
           <tr>
             <th>Input Your Use</th>
             <th>Library Materials & Services</th>
-            <th><a href="javascript:popUp('valuecalc_costs.html','window',450,575)">Value of Your Use</a></th>
+            <th>Value of Your Use</th>
           </tr>
           <tr><td colspan="3"><hr></td></tr>
         </thead>
         <tbody>
-          <!-- Fields inserted here -->
+            <!-- Fields inserted here -->
           <!-- Template rows -->
-          <tr><td><input type="text" name="books" id="books" onchange="doCalculator()"></td><td><label for="books">Adult Books Borrowed</label></td><td>$<input type="text" id="booksResult" value="0.00" readonly></td></tr>
-          <tr><td><input type="text" name="yabooks" id="yabooks" onchange="doCalculator()"></td><td><label for="yabooks">YA Books Borrowed</label></td><td>$<input type="text" id="yabooksResult" value="0.00" readonly></td></tr>
-          <tr><td><input type="text" name="childrensbooks" id="childrensbooks" onchange="doCalculator()"></td><td><label for="childrensbooks">Children's Books Borrowed</label></td><td>$<input type="text" id="childrensbooksResult" value="0.00" readonly></td></tr>
-          <tr><td><input type="text" name="audiobooks" id="audiobooks" onchange="doCalculator()"></td><td><label for="audiobooks">Audiobooks Borrowed</label></td><td>$<input type="text" id="audiobooksResult" value="0.00" readonly></td></tr>
-          <tr><td><input type="text" name="ill" id="ill" onchange="doCalculator()"></td><td><label for="ill">Interlibrary Loan Requests</label></td><td>$<input type="text" id="illResult" value="0.00" readonly></td></tr>
-          <tr><td><input type="text" name="ebooks" id="ebooks" onchange="doCalculator()"></td><td><label for="ebooks">eBooks Downloaded</label></td><td>$<input type="text" id="ebooksResult" value="0.00" readonly></td></tr>
-          <tr><td><input type="text" name="magazines" id="magazines" onchange="doCalculator()"></td><td><label for="magazines">Magazines Read</label></td><td>$<input type="text" id="magazinesResult" value="0.00" readonly></td></tr>
-          <tr><td><input type="text" name="newspapers" id="newspapers" onchange="doCalculator()"></td><td><label for="newspapers">Newspapers Read</label></td><td>$<input type="text" id="newspapersResult" value="0.00" readonly></td></tr>
+          <tr><td><input type="text" name="books" id="books" onchange="doCalculator()"></td><td><label for="books">	Books Borrowed</label></td><td>$<input type="text" id="booksResult" value="0.00" readonly></td></tr>
+          <tr><td><input type="text" name="childrenbooks" id="childrenbooks" onchange="doCalculator()"></td><td><label for="childrenbooks">Children's Books Borrowed</label></td><td>$<input type="text" id="childrenbooksResult" value="0.00" readonly></td></tr>
           <tr><td><input type="text" name="movies" id="movies" onchange="doCalculator()"></td><td><label for="movies">Movies Borrowed</label></td><td>$<input type="text" id="moviesResult" value="0.00" readonly></td></tr>
-          <tr><td><input type="text" name="cds" id="cds" onchange="doCalculator()"></td><td><label for="cds">CDs Borrowed</label></td><td>$<input type="text" id="cdsResult" value="0.00" readonly></td></tr>
-          <tr><td><input type="text" name="musicdownloads" id="musicdownloads" onchange="doCalculator()"></td><td><label for="musicdownloads">Music Downloaded</label></td><td>$<input type="text" id="musicdownloadsResult" value="0.00" readonly></td></tr>
-          <tr><td><input type="text" name="meetingroom" id="meetingroom" onchange="doCalculator()"></td><td><label for="meetingroom">Meeting Room Use (per hour)</label></td><td>$<input type="text" id="meetingroomResult" value="0.00" readonly></td></tr>
-          <tr><td><input type="text" name="adultprogram" id="adultprogram" onchange="doCalculator()"></td><td><label for="adultprogram">Adult Program Attended</label></td><td>$<input type="text" id="adultprogramResult" value="0.00" readonly></td></tr>
-          <tr><td><input type="text" name="yaprogram" id="yaprogram" onchange="doCalculator()"></td><td><label for="yaprogram">Young Adult Program Attended</label></td><td>$<input type="text" id="yaprogramResult" value="0.00" readonly></td></tr>
-          <tr><td><input type="text" name="childrensprogram" id="childrensprogram" onchange="doCalculator()"></td><td><label for="childrensprogram">Children's Program Attended</label></td><td>$<input type="text" id="childrensprogramResult" value="0.00" readonly></td></tr>
-          <tr><td><input type="text" name="museumpasses" id="museumpasses" onchange="doCalculator()"></td><td><label for="museumpasses">Museum Passes Borrowed</label></td><td>$<input type="text" id="museumpassesResult" value="0.00" readonly></td></tr>
-          <tr><td><input type="text" name="computerhours" id="computerhours" onchange="doCalculator()"></td><td><label for="computerhours">Computer Use (per hour)</label></td><td>$<input type="text" id="computerhoursResult" value="0.00" readonly></td></tr>
-          <tr><td><input type="text" name="databases" id="databases" onchange="doCalculator()"></td><td><label for="databases">Database Searches</label></td><td>$<input type="text" id="databasesResult" value="0.00" readonly></td></tr>
+          <tr><td><input type="text" name="music" id="music" onchange="doCalculator()"></td><td><label for="music">Music Borrowed</label></td><td>$<input type="text" id="musicResult" value="0.00" readonly></td></tr>
+          <tr><td><input type="text" name="audiobooks" id="audiobooks" onchange="doCalculator()"></td><td><label for="audiobooks">Audiobooks Borrowed</label></td><td>$<input type="text" id="audiobooksResult" value="0.00" readonly></td></tr>
+          <tr><td><input type="text" name="materialsused" id="materialsused" onchange="doCalculator()"></td><td><label for="materialsused">Materials Used in Library</label></td><td>$<input type="text" id="materialsusedResult" value="0.00" readonly></td></tr>
+          <tr><td><input type="text" name="interlibrary" id="interlibrary" onchange="doCalculator()"></td><td><label for="interlibrary">Interlibrary Loan</label></td><td>$<input type="text" id="interlibraryResult" value="0.00" readonly></td></tr>
+          <tr><td><input type="text" name="downloadableab" id="downloadableab" onchange="doCalculator()"></td><td><label for="downloadableab">Downloadable Audiobooks</label></td><td>$<input type="text" id="downloadableabResult" value="0.00" readonly></td></tr>
+          <tr><td><input type="text" name="downloadableeB" id="downloadableeB" onchange="doCalculator()"></td><td><label for="downloadableeB">Downloadable eBooks</label></td><td>$<input type="text" id="downloadableeBResult" value="0.00" readonly></td></tr>
+          <tr><td><input type="text" name="magazines" id="magazines" onchange="doCalculator()"></td><td><label for="magazines">Downloadable Magazines</label></td><td>$<input type="text" id="magazinesResult" value="0.00" readonly></td></tr>
+          <tr><td><input type="text" name="computeruse" id="computeruse" onchange="doCalculator()"></td><td><label for="computeruse">Hours of Computer Use</label></td><td>$<input type="text" id="computeruseResult" value="0.00" readonly></td></tr>
+          <tr><td><input type="text" name="wifisessions" id="wifisessions" onchange="doCalculator()"></td><td><label for="wifisessions">Wi-Fi Sessions</label></td><td>$<input type="text" id="wifisessionsResult" value="0.00" readonly></td></tr>
+          <tr><td><input type="text" name="hotspots" id="hotspots" onchange="doCalculator()"></td><td><label for="hotspots">Hotspots Borrowed</label></td><td>$<input type="text" id="hotspotsResult" value="0.00" readonly></td></tr>
+          <tr><td><input type="text" name="newspaper" id="newspaper" onchange="doCalculator()"></td><td><label for="newspaper">Newspapers Viewed Online</label></td><td>$<input type="text" id="newspaperResult" value="0.00" readonly></td></tr>
+          <tr><td><input type="text" name="databaseseraches" id="databaseseraches" onchange="doCalculator()"></td><td><label for="databaseseraches">Database Searches</label></td><td>$<input type="text" id="databaseserachesResult" value="0.00" readonly></td></tr>
+          <tr><td><input type="text" name="gnenealogy" id="gnenealogy" onchange="doCalculator()"></td><td><label for="gnenealogy">Genealogy Research Resources</label></td><td>$<input type="text" id="gnenealogyResult" value="0.00" readonly></td></tr>
+          <tr><td><input type="text" name="programsandcalssses" id="programsandcalssses" onchange="doCalculator()"></td><td><label for="programsandcalssses">Programs and Classes Attended</label></td><td>$<input type="text" id="programsandcalsssesResult" value="0.00" readonly></td></tr>
+          <tr><td><input type="text" name="onlinetraining" id="onlinetraining" onchange="doCalculator()"></td><td><label for="onlinetraining">Online Courses and Training</label></td><td>$<input type="text" id="onlinetrainingResult" value="0.00" readonly></td></tr>
+          <tr><td><input type="text" name="livetutoring" id="livetutoring" onchange="doCalculator()"></td><td><label for="livetutoring">Live Internet Tutoring Sessions</label></td><td>$<input type="text" id="livetutoringResult" value="0.00" readonly></td></tr>
           <tr><td><input type="text" name="reference" id="reference" onchange="doCalculator()"></td><td><label for="reference">Reference Assistance</label></td><td>$<input type="text" id="referenceResult" value="0.00" readonly></td></tr>
-
+          <tr><td><input type="text" name="meetingroooms" id="meetingroooms" onchange="doCalculator()"></td><td><label for="meetingroooms">Meeting Room Reservations</label></td><td>$<input type="text" id="meetingrooomsResult" value="0.00" readonly></td></tr>      
+          <tr><td><input type="text" name="chromebooks" id="chromebooks" onchange="doCalculator()"></td><td><label for="chromebooks">Chromebooks Borrowed</label></td><td>$<input type="text" id="chromebooksResult" value="0.00" readonly></td></tr>
           <tr><td colspan="3"><hr></td></tr>
           <tr>
             <td colspan="2" align="center">
               <input type="button" value="Calculate The Value of Your Library Use" onclick="doCalculator()">
               <input type="reset" value="Clear Form">
             </td>
-            <td>$<input type="text" name="totalResult" id="totalResult" size="5" value="0.00" readonly></td>
+            <td>$<input type="text" name="totalResult" id="totalResult" size="5" readonly value="0.00"></td>
           </tr>
+
+          <tr>
+            <td colspan="3" align="center">
+              <button onclick="shareValue()" type="button">📢 Share My Savings</button>
+              <button onclick="shareOnFacebook()">📘 Share on Facebook</button>
+
+            </td>
+          </tr>
+
           <tr><td colspan="3"><hr></td></tr>
           <tr>
             <td colspan="3" align="left">
@@ -145,6 +186,5 @@
       </table>
     </form>
   </div>
-
 </body>
 </html>
